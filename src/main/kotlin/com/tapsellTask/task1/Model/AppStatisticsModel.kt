@@ -1,5 +1,9 @@
 package com.tapsellTask.task1.Model
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
+
+
 class AppStatisticsModel(
         val weekNum: Int,
         val year: Int,

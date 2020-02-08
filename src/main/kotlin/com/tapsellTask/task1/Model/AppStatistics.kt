@@ -1,20 +1,19 @@
 package com.tapsellTask.task1.Model
 
+import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.Document
+import org.springframework.data.mongodb.core.mapping.MongoId
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.Id
 
-@Entity
-class AppStatistics {
-    @Id
-    val id: String = ""
-    val reportTime: Date = Date(0)
-    val type: Int = 0
-    val videoRequests: Int = 0
-    val webViewRequest: Int = 0
-    val videoClicks: Int = 0
-    val videoInstalls: Int = 0
-    val webViewInstalls: Int = 0
-
+@Document
+class AppStatistics(@MongoId val id: String,
+                    val reportTime: Date,
+                    val type: Int,
+                    val videoRequests: Int,
+                    val webViewRequest: Int,
+                    val videoClicks: Int,
+                    val videoInstalls: Int,
+                    val webViewInstalls: Int
+) {
 
 }
