@@ -25,10 +25,10 @@ class MongoDBConfig(val repo: AppStatRepo) {
     @Bean
     fun config(): CommandLineRunner {
 
-        repo.save(AppStat("miket", Date(), 1, 100, 1000, 50, 20, 100))
-        repo.save(AppStat("balad", Date(), 3, 88, 390, 50, 20, 390))
-        repo.save(AppStat("quiz of kings", Date(), 5, 150, 700, 120, 11, 65))
-        repo.save(AppStat("cafe bazar", Date(), 1, 100, 1000, 50, 20, 100))
+        repo.save(AppStat("miket", Date(132132889132), 11, 100, 1000, 50, 20, 100))
+        repo.save(AppStat("balad", Date(6546464465), 3, 88, 390, 50, 20, 390))
+        repo.save(AppStat("quiz of kings", Date(879794646), 5, 150, 700, 120, 11, 65))
+        repo.save(AppStat("cafe bazar", Date(), 1, 133, 1000, 50, 20, 100))
         repo.save(AppStat("aftabe", Date(), 3, 88, 390, 50, 20, 390))
         repo.save(AppStat("neshan", Date(), 5, 150, 700, 120, 11, 65))
         return CommandLineRunner {
