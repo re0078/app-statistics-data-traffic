@@ -2,18 +2,19 @@ package com.tapsellTask.task1.controller
 
 import com.tapsellTask.task1.model.AppStat
 import com.tapsellTask.task1.model.AppStatRequest
-import com.tapsellTask.task1.repository.AppStatisticsRepo
+import com.tapsellTask.task1.repository.AppStatRepo
+import com.tapsellTask.task1.service.AppStatService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @Controller
-class AppStatisticController(val repo: AppStatisticsRepo) {
+class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatService) {
 
     @RequestMapping("/", method = [RequestMethod.GET])
     @ResponseBody
     fun getStatistics(@RequestBody req: AppStatRequest) {
-
+        appStatService
     }
 
     @GetMapping("get/{id}")

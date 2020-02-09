@@ -1,7 +1,7 @@
 package com.tapsellTask.task1.config
 
 import com.tapsellTask.task1.model.AppStat
-import com.tapsellTask.task1.repository.AppStatisticsRepo
+import com.tapsellTask.task1.repository.AppStatRepo
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 import org.springframework.boot.CommandLineRunner
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 import java.util.*
 
-@EnableMongoRepositories(basePackageClasses = [AppStatisticsRepo::class])
+@EnableMongoRepositories(basePackageClasses = [AppStatRepo::class])
 @Configuration
-class MongoDBConfig(private val repo: AppStatisticsRepo) {
+class MongoDBConfig(private val repo: AppStatRepo) {
 
     private final val log: Log = LogFactory.getLog("Task1Application")
 
