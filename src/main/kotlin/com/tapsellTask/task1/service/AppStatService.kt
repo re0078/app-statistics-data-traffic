@@ -3,15 +3,13 @@ package com.tapsellTask.task1.service
 import com.tapsellTask.task1.config.START_DATE
 import com.tapsellTask.task1.entity.AppStat
 import com.tapsellTask.task1.model.AppStatModel
-import org.springframework.data.mongodb.core.MongoTemplate
-import org.springframework.data.mongodb.core.query.Criteria
-import org.springframework.data.mongodb.core.query.Query
+import com.tapsellTask.task1.repository.AppStatQuery
 import org.springframework.stereotype.Service
 import java.util.*
 
 
 @Service
-class AppStatService(val mongoTemplate: MongoTemplate) {
+class AppStatService(val appStatQuery: AppStatQuery) {
 
     fun getStatistics(startDate: Date, endDate: Date, type: Int): List<AppStatModel> {
 
@@ -25,8 +23,6 @@ class AppStatService(val mongoTemplate: MongoTemplate) {
             return AppStatModel(weekNum, year, requests, clicks, installs)
         }
 
-        val query = Query()
-        query.addCriteria(Criteria.where("reportTime").gte(startDate).lte(endDate).and("type").`is`(type))
-        return mongoTemplate.find(query, AppStat::class.java).map { toResponseModel(it) }
+        return appStatQuery.matchType(startDate, endDate, type).map { toResponseModel(it) }
     }
 }
