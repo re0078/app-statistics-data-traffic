@@ -32,28 +32,4 @@ class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatS
     fun getAll(): List<AppStat> {
         return repo.findAll()
     }
-
-    @GetMapping("test-response")
-    fun testResponse(): AppStatRequest {
-        val type = TestResponse("hi there", 64, Date(45), arrayOf(2, 3, 34, 4, 4, 41))
-        val type2 = AppStatRequest(Date(0), Date(0), 3)
-        return type2
-    }
-
-    @GetMapping("test-request")
-    fun testRequest(@RequestBody test: TestRequest): String {
-        println(test)
-        return "data received"
-    }
-
-}
-
-
-class TestResponse(val str: String, val num: Int, val date: Date, val array: Array<Int>)
-
-class TestRequest(val date: Date, val num: Int) {
-    @Override
-    override fun toString(): String {
-        return "date = $date\t num = $num"
-    }
 }
