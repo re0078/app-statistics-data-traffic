@@ -1,6 +1,7 @@
 package com.tapsellTask.task1.config
 
-import com.tapsellTask.task1.model.AppStat
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.tapsellTask.task1.entity.AppStat
 import com.tapsellTask.task1.repository.AppStatRepo
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
@@ -10,9 +11,13 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 import java.util.*
 
+
+val START_DATE: Date = Date(0)
+
+
 @EnableMongoRepositories(basePackageClasses = [AppStatRepo::class])
 @Configuration
-class MongoDBConfig(private val repo: AppStatRepo) {
+class MongoDBConfig(val repo: AppStatRepo) {
 
     private final val log: Log = LogFactory.getLog("Task1Application")
 
@@ -28,11 +33,7 @@ class MongoDBConfig(private val repo: AppStatRepo) {
         repo.save(AppStat("neshan", Date(), 5, 150, 700, 120, 11, 65))
         return CommandLineRunner {
             @Override
-            fun run() {
-
-            }
-        }
-    }
+            fun run() {} } }
 }
 
 

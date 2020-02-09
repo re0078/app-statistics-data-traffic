@@ -1,4 +1,4 @@
-package com.tapsellTask.task1.model
+package com.tapsellTask.task1.entity
 
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.MongoId
