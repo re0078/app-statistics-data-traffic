@@ -22,8 +22,8 @@ class RedisConfig(val env: Environment) {
     @Bean
     fun redisConnectionFactory(): LettuceConnectionFactory {
         val redisConf = RedisStandaloneConfiguration()
-        redisConf.setHostName(env!!.getProperty("spring.redis.host")!!)
-        redisConf.setPort(env.getProperty("spring.redis.port")!!.toInt())
+        redisConf.hostName = env.getProperty("spring.redis.host")!!
+        redisConf.port = env.getProperty("spring.redis.port")!!.toInt()
         return LettuceConnectionFactory(redisConf)
     }
 
@@ -35,7 +35,7 @@ class RedisConfig(val env: Environment) {
     }
 
     @Bean
-    fun cacheManagncorrecter(): RedisCacheManager {
+    fun cacheManageCorrecter(): RedisCacheManager {
         return RedisCacheManager.builder(redisConnectionFactory())
                 .cacheDefaults(cacheConfiguration())
                 .transactionAware()

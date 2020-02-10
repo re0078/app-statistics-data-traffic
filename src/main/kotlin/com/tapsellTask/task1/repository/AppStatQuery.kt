@@ -10,14 +10,16 @@ import java.util.*
 
 
 @Component
-class AppStatQuery(private val mongoTemplate: MongoTemplate, val repo: AppStatRepo) {
+class AppStatQuery(private val mongoTemplate: MongoTemplate) {
+
+    private final val log: org.apache.commons.logging.Log = org.apache.commons.logging.LogFactory.getLog("Task1Application")
 
     fun matchType(startDate: Date, endDate: Date, type: Int): List<AppStat> {
         val query = Query()
-
         query.addCriteria(Criteria.where("reportTime").gte(startDate).lte(endDate).and("type").`is`(type))
         query.with(PageRequest.of(0, 10))
-        println("query..")
+
+        log.info("Performing custom query..")
         return mongoTemplate.find(query, AppStat::class.java)
     }
 }

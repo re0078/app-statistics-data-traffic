@@ -13,8 +13,7 @@ class TestController {
 
     @GetMapping("test-response")
     fun testResponse(): TestResponse {
-        val type = TestResponse("hi there", 64, Date(45), arrayOf(2, 3, 34, 4, 4, 41))
-        return type
+        return TestResponse("hi there", 64, Date(45), arrayOf(2, 3, 34, 4, 4, 41))
     }
 
     @GetMapping("test-request")
