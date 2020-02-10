@@ -7,14 +7,22 @@ import com.tapsellTask.task1.model.AppStatRequest
 import com.tapsellTask.task1.repository.AppStatRepo
 import com.tapsellTask.task1.service.AppStatService
 import org.apache.commons.logging.LogFactory
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatService) {
+class AppStatisticController(
+        // repo should not be in controllers
+        val repo: AppStatRepo,
+        val appStatService: AppStatService
+) {
 
+    // we usually use slf4j logger
     private final val log: org.apache.commons.logging.Log = LogFactory.getLog("Task1Application")
+    private val logger = LoggerFactory.getLogger(javaClass.simpleName)
 
+    // rest endpoints should not contain verbs (the http method is enough)
     @GetMapping("/get-stat")
     @ResponseBody
     fun getStatistics(@RequestBody appStatReq: AppStatRequest): AppStatListResponse {
@@ -26,7 +34,7 @@ class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatS
         return appStatService.getStatistics(appStatReq.startDate, appStatReq.endDate, appStatReq.type)
     }
 
-    @GetMapping("get/{id}")
+    @GetMapping("/{id}")
     fun getById(@PathVariable id: String): Optional<AppStat> {
         return repo.findById(id)
     }

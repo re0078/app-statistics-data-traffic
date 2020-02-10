@@ -14,6 +14,8 @@ class AppStatQuery(private val mongoTemplate: MongoTemplate) {
 
     private final val log: org.apache.commons.logging.Log = org.apache.commons.logging.LogFactory.getLog("Task1Application")
 
+    // there is no need for this block of code ...
+    // class and function name
     fun matchType(startDate: Date, endDate: Date, type: Int): List<AppStat> {
         val query = Query()
         query.addCriteria(Criteria.where("reportTime").gte(startDate).lte(endDate).and("type").`is`(type))
