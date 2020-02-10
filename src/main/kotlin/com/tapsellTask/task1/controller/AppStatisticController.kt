@@ -14,11 +14,13 @@ class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatS
 
     private final val log: org.apache.commons.logging.Log = LogFactory.getLog("Task1Application")
 
-    @GetMapping("/")
+    @GetMapping("/get-stat")
+    @ResponseBody
     fun getStatistics(@RequestBody appStatReq: AppStatRequest): List<AppStatModel> {
         // response model already returned from called method
-        log.info("Request received for address : /")
-        log.info("AppStat requested ${appStatReq.type} as type and from ${appStatReq.startDate} to ${appStatReq.endDate}")
+        log.info("Request received for address : /get-stat")
+        log.info("AppStat requested type : ${appStatReq.type}   from ${appStatReq.startDate} to ${appStatReq.endDate}")
+
         return appStatService.getStatistics(appStatReq.startDate, appStatReq.endDate, appStatReq.type)
     }
 

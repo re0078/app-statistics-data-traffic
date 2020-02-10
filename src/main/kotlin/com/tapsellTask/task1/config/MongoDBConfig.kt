@@ -1,6 +1,6 @@
 package com.tapsellTask.task1.config
 
-import com.fasterxml.jackson.databind.ObjectMapper
+// todo learn com.fasterxml.jackson.databind.ObjectMapper
 import com.tapsellTask.task1.entity.AppStat
 import com.tapsellTask.task1.repository.AppStatRepo
 import org.apache.commons.logging.Log
@@ -10,8 +10,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories
 import java.util.*
+import com.github.mfathi91.time.PersianDate
 
 
+//val START_DATE: PersianDate = PersianDate.of(1395, 1,1)
 val START_DATE: Date = Date(0)
 
 
@@ -21,19 +23,21 @@ class MongoDBConfig(val repo: AppStatRepo) {
 
     private final val log: Log = LogFactory.getLog("Task1Application")
 
-
     @Bean
     fun config(): CommandLineRunner {
 
-        repo.save(AppStat("miket", Date(132132889132), 11, 100, 1000, 50, 20, 100))
+        repo.save(AppStat("miket", Date(132132889132), 3, 100, 1000, 50, 20, 100))
         repo.save(AppStat("balad", Date(6546464465), 3, 88, 390, 50, 20, 390))
         repo.save(AppStat("quiz of kings", Date(879794646), 5, 150, 700, 120, 11, 65))
-        repo.save(AppStat("cafe bazar", Date(), 1, 133, 1000, 50, 20, 100))
+        repo.save(AppStat("cafe bazar", Date(8644768768), 3, 133, 1000, 50, 20, 100))
         repo.save(AppStat("aftabe", Date(), 3, 88, 390, 50, 20, 390))
-        repo.save(AppStat("neshan", Date(), 5, 150, 700, 120, 11, 65))
+        repo.save(AppStat("neshan", Date(), 3, 150, 700, 120, 11, 65))
         return CommandLineRunner {
             @Override
-            fun run() {} } }
+            fun run() {
+            }
+        }
+    }
 }
 
 

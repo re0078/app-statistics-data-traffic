@@ -1,6 +1,5 @@
 package com.tapsellTask.task1.controller
 
-import com.tapsellTask.task1.model.AppStatRequest
 import com.tapsellTask.task1.model.TestRequest
 import com.tapsellTask.task1.model.TestResponse
 import org.springframework.web.bind.annotation.GetMapping
