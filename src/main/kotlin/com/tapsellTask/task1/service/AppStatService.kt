@@ -14,10 +14,9 @@ class AppStatService(val appStatQuery: AppStatQuery) {
 
     @Cacheable(value = ["redis"], key = "{#startDate, #endDate, #type}") // uses SpEL language and parsing method
     fun getStatistics(startDate: Date, endDate: Date, type: Int): List<AppStatModel> {
-
         fun toResponseModel(appStat: AppStat): AppStatModel {
             val milliseconds = appStat.reportTime.time - START_DATE.time
-            val year: Int = (milliseconds / 3.154e+10).toInt() + 1970
+            val year: Int = (milliseconds / 3.154e+10).toInt() + 1395
             val weekNum = (milliseconds / 6.048e+8).toInt() % 53
             val requests = appStat.videoRequests + appStat.webViewRequest
             val installs = appStat.videoInstalls + appStat.webViewInstalls

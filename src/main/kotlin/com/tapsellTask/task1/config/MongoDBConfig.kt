@@ -13,8 +13,7 @@ import java.util.*
 import com.github.mfathi91.time.PersianDate
 
 
-//val START_DATE: PersianDate = PersianDate.of(1395, 1,1)
-val START_DATE: Date = Date(0)
+val START_DATE: Date = Date(-18144518400000) // as 1395 AD
 
 
 @EnableMongoRepositories(basePackageClasses = [AppStatRepo::class])
@@ -32,11 +31,7 @@ class MongoDBConfig(val repo: AppStatRepo) {
         repo.save(AppStat("cafe bazar", Date(8644768768), 3, 133, 1000, 50, 20, 100))
         repo.save(AppStat("aftabe", Date(), 3, 88, 390, 50, 20, 390))
         repo.save(AppStat("neshan", Date(), 3, 150, 700, 120, 11, 65))
-        return CommandLineRunner {
-            @Override
-            fun run() {
-            }
-        }
+        return CommandLineRunner {}
     }
 }
 
