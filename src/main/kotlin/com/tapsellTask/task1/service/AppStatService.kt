@@ -2,6 +2,7 @@ package com.tapsellTask.task1.service
 
 import com.tapsellTask.task1.config.START_DATE
 import com.tapsellTask.task1.entity.AppStat
+import com.tapsellTask.task1.model.AppStatListResponse
 import com.tapsellTask.task1.model.AppStatModel
 import com.tapsellTask.task1.repository.AppStatQuery
 import org.springframework.cache.annotation.Cacheable
@@ -13,7 +14,7 @@ class AppStatService(val appStatQuery: AppStatQuery) {
 
 
     @Cacheable(value = ["redis"], key = "{#startDate, #endDate, #type}") // uses SpEL language and parsing method
-    fun getStatistics(startDate: Date, endDate: Date, type: Int): List<AppStatModel> {
+    fun getStatistics(startDate: Date, endDate: Date, type: Int): AppStatListResponse {
         fun toResponseModel(appStat: AppStat): AppStatModel {
             val milliseconds = appStat.reportTime.time - START_DATE.time
             val year: Int = (milliseconds / 3.154e+10).toInt() + 1395
@@ -24,6 +25,6 @@ class AppStatService(val appStatQuery: AppStatQuery) {
             return AppStatModel(weekNum, year, requests, clicks, installs)
         }
 
-        return appStatQuery.matchType(startDate, endDate, type).map { toResponseModel(it) }
+        return AppStatListResponse(appStatQuery.matchType(startDate, endDate, type).map { toResponseModel(it) })
     }
 }

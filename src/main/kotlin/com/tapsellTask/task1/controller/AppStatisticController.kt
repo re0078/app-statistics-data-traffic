@@ -1,6 +1,7 @@
 package com.tapsellTask.task1.controller
 
 import com.tapsellTask.task1.entity.AppStat
+import com.tapsellTask.task1.model.AppStatListResponse
 import com.tapsellTask.task1.model.AppStatModel
 import com.tapsellTask.task1.model.AppStatRequest
 import com.tapsellTask.task1.repository.AppStatRepo
@@ -16,7 +17,8 @@ class AppStatisticController(val repo: AppStatRepo, val appStatService: AppStatS
 
     @GetMapping("/get-stat")
     @ResponseBody
-    fun getStatistics(@RequestBody appStatReq: AppStatRequest): List<AppStatModel> {
+    fun getStatistics(@RequestBody appStatReq: AppStatRequest): AppStatListResponse {
+
         // response model already returned from called method
         log.info("Request received for address : /get-stat")
         log.info("AppStat requested type : ${appStatReq.type}   from ${appStatReq.startDate} to ${appStatReq.endDate}")
