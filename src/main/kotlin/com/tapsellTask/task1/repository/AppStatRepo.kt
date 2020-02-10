@@ -8,7 +8,7 @@ import java.util.*
 
 interface AppStatRepo : MongoRepository<AppStat, String> {
 
-    @Query("{'type': 2, 'reportTime':{\$gt : 12}")
+    @Query("{'type': type, 'reportTime':{\$gt: startDate, \$lt: endDate}")
     fun matchType(startDate: Date, endDate: Date, type: Int): List<AppStat>
 
 

@@ -18,7 +18,6 @@ class AppStatQuery(private val mongoTemplate: MongoTemplate, val repo: AppStatRe
         query.addCriteria(Criteria.where("reportTime").gte(startDate).lte(endDate).and("type").`is`(type))
         query.with(PageRequest.of(0, 10))
         println("query..")
-//        return repo.findAllByType(type, PageRequest.of(0, 10))
         return mongoTemplate.find(query, AppStat::class.java)
     }
 }

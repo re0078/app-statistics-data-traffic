@@ -12,7 +12,7 @@ import java.util.*
 class AppStatService(val appStatQuery: AppStatQuery) {
 
 
-    @Cacheable(value = ["redis"], key = "{#startDate, #endDate, #type}")
+    @Cacheable(value = ["redis"], key = "{#startDate, #endDate, #type}") // uses SpEL language and parsing method
     fun getStatistics(startDate: Date, endDate: Date, type: Int): List<AppStatModel> {
 
         fun toResponseModel(appStat: AppStat): AppStatModel {
