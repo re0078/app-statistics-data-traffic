@@ -22,6 +22,6 @@ class AppStatisticController(val appStatService: AppStatService) {
         logger.info("Request received for address : /stat")
         logger.info("AppStat requested type : ${appStatReq?.type}   from ${appStatReq?.startDate} to ${appStatReq?.endDate}")
 
-        return if (appStatReq != null) appStatService.getStatistics(appStatReq) else appStatService.getAll()
+        return AppStatListResponse(if (appStatReq != null) appStatService.getStatistics(appStatReq) else appStatService.getAll())
     }
 }
