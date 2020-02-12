@@ -20,7 +20,6 @@ class AppStatQuery(private val mongoTemplate: MongoTemplate) {
         val query = Query()
         query.addCriteria(Criteria.where("reportTime").gte(startDate).lte(endDate).and("type").`is`(type))
         query.with(PageRequest.of(0, 10))
-
         log.info("Performing custom query..")
         return mongoTemplate.find(query, AppStat::class.java)
     }

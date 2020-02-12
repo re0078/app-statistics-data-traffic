@@ -1,3 +1,5 @@
 package com.tapsellTask.task1.model
 
-class AppStatListResponse(stats: List<AppStatModel>)
+import java.io.Serializable
+
+class AppStatListResponse(val stats: List<AppStatModel>) : Serializable
