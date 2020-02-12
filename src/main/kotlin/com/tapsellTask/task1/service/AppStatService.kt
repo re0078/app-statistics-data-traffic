@@ -1,6 +1,5 @@
 package com.tapsellTask.task1.service
 
-import com.tapsellTask.task1.model.AppStatListResponse
 import com.tapsellTask.task1.model.AppStatModel
 import com.tapsellTask.task1.model.AppStatRequest
 import com.tapsellTask.task1.repository.AppStatRepo

@@ -1,15 +1,15 @@
 package com.tapsellTask.task1.service
 
 import com.tapsellTask.task1.entity.AppStat
-import com.tapsellTask.task1.model.AppStatListResponse
 import com.tapsellTask.task1.model.AppStatModel
 import org.springframework.stereotype.Service
 import java.util.*
 
-val WEEK_DURATION = Date("10/17/2000").time - Date("10/10/2000").time
 
 @Service
 class AppStatDataAggregator(val dateConverter: DateConverter) {
+
+    val WEEK_DURATION = Date("10/17/2000").time - Date("10/10/2000").time
 
     fun aggregate(appStats: List<AppStat>): List<AppStatModel> {
         return appStats.map {
